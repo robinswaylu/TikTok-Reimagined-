@@ -14,7 +14,7 @@ const Home = ( { videos } : Iprops ) => {
     <div className='flex flex-col gap-10 videos h-full'>
     {videos.length 
       ? videos.map((video: Video) => (
-        <VideoCards post={video} isShowingOnHome key={video._id} />
+        <VideoCards post={video}   key={video._id} />
       )) 
       : <NoResults text={`No Videos`} />}
   </div>
