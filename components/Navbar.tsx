@@ -52,7 +52,7 @@ const Navbar = () => {
                             className='   px-2  '
                             onClick={() => {
                                 googleLogout();
-                                //remove user from local storage
+                                //remove user from local store
                                 removeUser();
                             }}
                         >
