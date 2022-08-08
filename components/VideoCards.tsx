@@ -27,6 +27,14 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
             setPlaying(true);
         }
     };
+
+    {/*UseEffect hook will be called everytime isVideoMuted state updates*/}
+    useEffect(() => {
+        if (videoRef?.current) {
+            videoRef.current.muted = isVideoMuted;
+        }
+    }, [isVideoMuted]);
+
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
 
@@ -69,7 +77,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                     <Link href={`/detail/${post._id}`}>
                         <video
                             loop
-                            ref={videoRef} 
+                            ref={videoRef}
                             src={post.video.asset.url}
                             className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
                         ></video>
