@@ -19,6 +19,7 @@ interface IProps {
   postDetails: Video;
 }
 
+//postDetails props come from NextJS getServerSideProps
 const Detail = ({ postDetails }: IProps) => {
 
   const [post, setPost] = useState(postDetails);
@@ -166,12 +167,13 @@ const Detail = ({ postDetails }: IProps) => {
   )
 }
 
-
+// Next.js will pre-render this page on each request using the data returned by getServerSideProps
 export const getServerSideProps = async ({
   params: { id },
 }: {
   params: { id: string };
 }) => {
+  //GET from sanity backend using url param id
   const { data } = await axios.get(`${BASE_URL}/api/post/${id}`);
 
   return {

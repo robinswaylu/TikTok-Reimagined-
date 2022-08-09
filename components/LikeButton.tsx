@@ -12,6 +12,7 @@ interface IProps {
 }
 
 const LikeButton = ({ likes, handleLike, handleDislike }: IProps) => {
+    
     const [alreadyLiked, setAlreadyLiked] = useState(false);
     const { userProfile }: any = useAuthStore();
 
