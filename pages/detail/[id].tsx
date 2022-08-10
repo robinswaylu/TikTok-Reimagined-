@@ -70,6 +70,22 @@ const Detail = ({ postDetails }: IProps) => {
     }
   };
 
+  const addComment = async (e: any) => {
+    e.preventDefault();
+
+    if (userProfile && comment) {
+      setIsPostingComment(true);
+      const { data} = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+        userId: userProfile._id,
+        comment
+      });
+
+      setPost({ ...post, comments: data.comments });
+      setComment('');
+      setIsPostingComment(false);
+
+    }
+  };
   //if post doesn't exist, return null
   if (!post) return null;
 
@@ -156,6 +172,11 @@ const Detail = ({ postDetails }: IProps) => {
 
           {/*Comments section  */}
           <Comments
+            comment = {comment}
+            setComment = { setComment }
+            addComment = { addComment } 
+            comments =  {post.comments}
+            isPostingComment = { isPostingComment }
           />
 
         </div>
