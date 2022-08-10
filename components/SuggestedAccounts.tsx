@@ -23,11 +23,11 @@ const SuggestedAccounts = () => {
         {/*only show first 6 accounts in database. TODO: show AI recommended accounts */}
         {allUsers?.slice(0, 6).map((user: IUser) => (
           <Link href={`/profile/${user._id}`} key={user._id}>
-            <div className='flex gap-3 hover:bg-primary p-2 cursor-pointer font-semibold rounded'>
-              <div className='w-8 h-8'>
+            <div className='flex gap-3 hover:bg-primary p-2 cursor-pointer font-semibold rounded items-center'>
+              <div className='w-10 h-10'>
                 <Image
-                  width={34}
-                  height={34}
+                  width={60}
+                  height={60}
                   className='rounded-full'
                   src={user.image}
                   alt='user profile'
@@ -38,7 +38,7 @@ const SuggestedAccounts = () => {
               <div className='hidden xl:block'>
                 <p className='flex gap-1 items-center text-md font-bold text-primary lowercase'>
                   {user.userName.replace(/\s+/g, '')}{' '}
-                  <GoVerified className='text-blue-400' />
+                  <GoVerified className='text-blue-400 relative top-0.5' />
                 </p>
                 <p className='capitalize text-gray-400 text-xs'>
                   {user.userName}
