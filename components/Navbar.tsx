@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { AiOutlineLogout } from 'react-icons/ai'
+import { MdOutlineLogout } from 'react-icons/md'
 import { GoogleLogin, googleLogout } from '@react-oauth/google'
 import { BiSearch } from 'react-icons/bi'
 import { IoMdAdd } from 'react-icons/io'
 
-import Logo from '../utils/tiktik-logo.png'
+//import Logo from '../utils/tiktik-logo.png'
+import Logo from '../utils/meteor.gif'
 import { create } from 'domain'
 import { createOrGetUser } from '../utils'
 
@@ -81,14 +82,14 @@ const Navbar = () => {
                         )}
                         <button
                             type='button'
-                            className='   px-2  '
+                            className='px-2'
                             onClick={() => {
                                 googleLogout();
                                 //remove user from local store
                                 removeUser();
                             }}
                         >
-                            <AiOutlineLogout color='red' fontSize={21} />
+                            <MdOutlineLogout color='purple' fontSize={21} />
                         </button>
                     </div>
 
