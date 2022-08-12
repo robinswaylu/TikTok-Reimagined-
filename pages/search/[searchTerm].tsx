@@ -29,7 +29,7 @@ const Search = ({ videos }: { videos: Video[] }) => {
         } else {
             setIsAccounts(true);
         }
-    }, []);
+    },[searchedAccounts.length]);
 
     return (
         <div className='w-full'>
