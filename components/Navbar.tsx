@@ -65,6 +65,7 @@ const Navbar = () => {
                                 <span className='hidden md:block'>Upload </span>
                             </button>
                         </Link>
+                        {/*TODO: fix typescript error message*/}
                         {userProfile.image && (
                             <Link href={`/profile/${userProfile._id}`}>
                                 <div>
