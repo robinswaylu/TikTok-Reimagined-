@@ -44,12 +44,12 @@ const Navbar = () => {
                     <input
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
-                        className='bg-primary p-3 md:text-md font-medium border-2 border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full  md:top-0'
+                        className='bg-primary px-3 py-2 md:text-md font-medium border-2 border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full  md:top-0'
                         placeholder='Search accounts and videos'
                     />
                     <button
                         onClick={handleSearch}
-                        className='absolute md:right-5 right-6 top-4 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400'
+                        className='absolute md:right-5 right-6 top-3 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400'
                     >
                         <BiSearch />
                     </button>
@@ -61,7 +61,7 @@ const Navbar = () => {
 
                     <div className='flex gap-5 md:gap-10'>
                         <Link href='/upload'>
-                            <button className='border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2'>
+                            <button className='border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2 hover:bg-primary'>
                                 <IoMdAdd className='text-xl' />{' '}
                                 <span className='hidden md:block'>Upload </span>
                             </button>
@@ -69,13 +69,13 @@ const Navbar = () => {
                         {/*TODO: fix typescript error message*/}
                         {userProfile.image && (
                             <Link href={`/profile/${userProfile._id}`}>
-                                <div>
+                                <div className='flex justify-center '>
                                     <Image
-                                        className='rounded-full cursor-pointer'
+                                        className='rounded-full cursor-pointer hover:!border-gray-700 !border-transparent !border '
                                         src={userProfile.image}
                                         alt='user'
-                                        width={40}
-                                        height={40}
+                                        width={30}
+                                        height={30}
                                     />
                                 </div>
                             </Link>
@@ -89,7 +89,7 @@ const Navbar = () => {
                                 removeUser();
                             }}
                         >
-                            <MdOutlineLogout color='purple' fontSize={21} />
+                            <MdOutlineLogout  className='hover:text-slate-600' fontSize={21} />
                         </button>
                     </div>
 

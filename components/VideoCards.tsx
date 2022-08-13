@@ -28,7 +28,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
         }
     };
 
-    {/*UseEffect hook will be called everytime isVideoMuted state updates*/}
+    {/*UseEffect hook will be called everytime isVideoMuted state updates*/ }
     useEffect(() => {
         if (videoRef?.current) {
             videoRef.current.muted = isVideoMuted;
@@ -54,7 +54,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                             </>
                         </Link>
                     </div>
-                    <div className='flex justify-center'>
+                    <div className='flex flex-col justify-center'>
                         <Link href={`/profile/${post.postedBy._id}`}>
                             <div className='flex items-center gap-2'>
                                 <p className='flex gap-2 items-center md:text-md font-bold text-primary'>{post.postedBy.userName} {' '}
@@ -62,11 +62,13 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                                 </p>
                                 <p className='capitalize font-medium text-xs text-gray-500 hidden md:block'>
                                     {post.postedBy.userName}
-                                </p> 
+                                </p>
                             </div>
                         </Link>
+                        <p className='text-gray-500'>{post.caption}</p>
                     </div>
                 </div>
+
             </div>
 
             <div className='lg:ml-20 flex gap-4 relative' >
