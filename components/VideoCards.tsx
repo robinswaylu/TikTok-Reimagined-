@@ -14,7 +14,7 @@ interface IProps {
 
 const VideoCards: NextPage<IProps> = ({ post }) => {
     const [playing, setPlaying] = useState(false);
-    const [isHover, setIsHover] = useState(false);
+    const [isHover, setIsHover] = useState(true);
     const [isVideoMuted, setIsVideoMuted] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -28,12 +28,27 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
         }
     };
 
+    const [width, setWidth] = useState<number>(window.innerWidth);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
     {/*UseEffect hook will be called everytime isVideoMuted state updates*/ }
     useEffect(() => {
         if (videoRef?.current) {
             videoRef.current.muted = isVideoMuted;
         }
-    }, [isVideoMuted]);
+        if (width <= 768) { setIsHover(true) }
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+            if (width <= 768) { setIsHover(true) }
+        }
+    }, [isVideoMuted, width]);
+
+
+
+
 
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
@@ -85,22 +100,22 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                         ></video>
                     </Link>
                     {isHover && (
-                        <div className='absolute bottom-6 cursor-pointer left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] lg:w-[600px] p-3'>
+                        <div className='absolute top-[45%] left-[45%] md:top-[inherit]    md:bottom-6 cursor-pointer  md:px-4 md:left-0 flex  lg:justify-between w-[100px] md:w-[50px] lg:w-[600px]  '>
                             {playing ? (
                                 <button onClick={onVideoPress}>
-                                    <BsFillPauseFill className='text-black text-2xl lg:text-4xl' />
+                                    <BsFillPauseFill className='text-gray-200 text-4xl md:text-black' />
                                 </button>
                             ) : (
                                 <button onClick={onVideoPress}>
-                                    <BsFillPlayFill className='text-black text-2xl lg:text-4xl' />
+                                    <BsFillPlayFill className='text-gray-200 text-4xl md:text-black' />
                                 </button>
                             )}
                             {isVideoMuted ? (
-                                <button onClick={() => setIsVideoMuted(false)}>
-                                    <HiVolumeOff className='text-black text-2xl lg:text-4xl' />
+                                <button onClick={() => setIsVideoMuted(false)} className='hidden md:block right-16'>
+                                    <HiVolumeOff className='text-black text-2xl lg:text-4x' />
                                 </button>
                             ) : (
-                                <button onClick={() => setIsVideoMuted(true)}>
+                                <button onClick={() => setIsVideoMuted(true)} className='hidden md:block right-16'>
                                     <HiVolumeUp className='text-black text-2xl lg:text-4xl' />
                                 </button>
                             )}
