@@ -28,23 +28,13 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
         }
     };
 
-    const [width, setWidth] = useState<number>(window.innerWidth);
-
-    function handleWindowSizeChange() {
-        setWidth(window.innerWidth);
-    }
+     
     {/*UseEffect hook will be called everytime isVideoMuted state updates*/ }
     useEffect(() => {
         if (videoRef?.current) {
             videoRef.current.muted = isVideoMuted;
-        }
-        if (width <= 768) { setIsHover(true) }
-        window.addEventListener('resize', handleWindowSizeChange);
-        return () => {
-            window.removeEventListener('resize', handleWindowSizeChange);
-            if (width <= 768) { setIsHover(true) }
-        }
-    }, [isVideoMuted, width]);
+        }  
+    }, [isVideoMuted]);
 
 
 
@@ -95,7 +85,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                             preload="metadata"
                             loop
                             ref={videoRef}
-                            src={post.video.asset.url + '#t=0.5'}
+                            src={post.video.asset.url + '#t=0.1'}
                             className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] rounded-2xl cursor-pointer bg-gray-100'
                         ></video>
                     </Link>
