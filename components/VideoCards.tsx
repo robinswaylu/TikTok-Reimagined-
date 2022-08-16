@@ -7,6 +7,7 @@ import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
 import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
 import { GoVerified } from 'react-icons/go';
 import { BsPlay } from 'react-icons/bs';
+import { useInView } from 'react-intersection-observer';
 
 interface IProps {
     post: Video;
@@ -15,8 +16,23 @@ interface IProps {
 const VideoCards: NextPage<IProps> = ({ post }) => {
     const [playing, setPlaying] = useState(false);
     const [isHover, setIsHover] = useState(true);
-    const [isVideoMuted, setIsVideoMuted] = useState(false);
+    const [isVideoMuted, setIsVideoMuted] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
+
+    //check if video is present in viewport
+    const { ref, inView, entry } = useInView({
+        /* Optional options */
+        threshold: 0,
+        onChange: (inView) => {
+            if (inView) {
+                videoRef?.current?.play();
+                setPlaying(true);
+            } else {
+                videoRef?.current?.pause();
+                setPlaying(false);
+            }
+        }
+    });
 
     const onVideoPress = () => {
         if (playing) {
@@ -42,6 +58,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
 
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6 w-full'  >
+
             <div>
                 <div className='flex gap-3 mb-2 cursor-pointer font-semibold rounded'>
                     <div className='md:w-16 md:h-16 w-10 h-10'>
@@ -75,15 +92,16 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
 
             </div>
 
-            <div className='lg:ml-20 flex gap-4 relative  justify-center md:justify-start' > 
-                <div className='rounded-3xl'
-                    // onMouseEnter={() => setIsHover(true)}
-                    // onMouseLeave={() => setIsHover(false)}
-                    >
+            <div className='lg:ml-20 flex gap-4 relative  justify-center md:justify-start' >
+                <div className='rounded-3xl' ref={ref}
+                // onMouseEnter={() => setIsHover(true)}
+                // onMouseLeave={() => setIsHover(false)}
+                >
                     <Link href={`/detail/${post._id}`}>
                         <video
                             preload="metadata"
-                            loop 
+                            loop
+                            muted
                             ref={videoRef}
                             src={post.video.asset.url + '#t=0.1'}
                             className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] rounded-2xl cursor-pointer bg-gray-100'
