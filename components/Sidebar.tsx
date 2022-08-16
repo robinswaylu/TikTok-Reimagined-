@@ -24,9 +24,9 @@ const Sidebar = () => {
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    console.log('use effect running')
+  useEffect(() => { 
+    if (width <= 768) { setShowSidebar(false) } else { setShowSidebar(true) }
+    window.addEventListener('resize', handleWindowSizeChange); 
     return () => {
       window.removeEventListener('resize', handleWindowSizeChange);
       if (width <= 768) { setShowSidebar(false) } else { setShowSidebar(true) }
