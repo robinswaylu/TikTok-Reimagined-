@@ -99,6 +99,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                             preload="metadata"
                             loop
                             muted
+                            playsInline
                             ref={videoRef}
                             src={post.video.asset.url + '#t=0.1'}
                             className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] rounded-2xl cursor-pointer bg-gray-100'
