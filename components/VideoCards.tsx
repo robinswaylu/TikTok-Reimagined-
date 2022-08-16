@@ -22,7 +22,8 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
     //check if video is present in viewport
     const { ref, inView, entry } = useInView({
         /* Optional options */
-        threshold: 0,
+        threshold: 0.9,
+        root: null,
         onChange: (inView) => {
             if (inView) {
                 videoRef?.current?.play();
@@ -53,12 +54,8 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
     }, [isVideoMuted]);
 
 
-
-
-
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6 w-full'  >
-
             <div>
                 <div className='flex gap-3 mb-2 cursor-pointer font-semibold rounded'>
                     <div className='md:w-16 md:h-16 w-10 h-10'>
