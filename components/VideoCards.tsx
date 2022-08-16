@@ -77,9 +77,10 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                     onMouseLeave={() => setIsHover(false)}>
                     <Link href={`/detail/${post._id}`}>
                         <video
+                            preload="metadata"
                             loop
                             ref={videoRef}
-                            src={post.video.asset.url}
+                            src={post.video.asset.url + '#t=0.5'}
                             className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] rounded-2xl cursor-pointer bg-gray-100'
                         ></video>
                     </Link>
