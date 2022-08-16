@@ -109,7 +109,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                         <div className='absolute top-[45%] left-[45%] md:top-[inherit]    md:bottom-6 cursor-pointer  md:px-4 md:left-0 flex  lg:justify-between w-[100px] md:w-[50px] lg:w-[600px]  '>
                             {playing ? (
                                 <button onClick={onVideoPress}>
-                                    <BsFillPauseFill className='text-gray-200 text-4xl md:text-black' />
+                                    <BsFillPauseFill className='text-gray-200 text-4xl md:text-black hidden md:block' />
                                 </button>
                             ) : (
                                 <button onClick={onVideoPress}>
