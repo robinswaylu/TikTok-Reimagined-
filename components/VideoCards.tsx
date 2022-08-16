@@ -39,7 +39,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
 
             <div>
-                <div className='flex gap-3 p-2 cursor-pointer font-semibold rounded'>
+                <div className='flex gap-3 mb-2 cursor-pointer font-semibold rounded'>
                     <div className='md:w-16 md:h-16 w-10 h-10'>
                         <Link href={`/profile/${post.postedBy._id}`}>
                             <> {/* Empty react element here because Link can't have Image as direct children */}
@@ -80,7 +80,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                             loop
                             ref={videoRef}
                             src={post.video.asset.url}
-                            className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
+                            className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] rounded-2xl cursor-pointer bg-gray-100'
                         ></video>
                     </Link>
                     {isHover && (

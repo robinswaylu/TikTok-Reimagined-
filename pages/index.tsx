@@ -12,7 +12,7 @@ interface Iprops {
 const Home = ({ videos }: Iprops) => {
   console.log('this is videos: ', videos)
   return (
-    <div className='flex flex-col gap-10 videos h-full'>
+    <div className='flex flex-col gap-6 videos h-full items-center'>
       {videos.length
         ? videos.map((video: Video) => (
           <VideoCards post={video} key={video._id} />
