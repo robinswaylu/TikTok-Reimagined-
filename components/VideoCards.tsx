@@ -28,12 +28,12 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
         }
     };
 
-     
+
     {/*UseEffect hook will be called everytime isVideoMuted state updates*/ }
     useEffect(() => {
         if (videoRef?.current) {
             videoRef.current.muted = isVideoMuted;
-        }  
+        }
     }, [isVideoMuted]);
 
 
@@ -41,8 +41,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
 
 
     return (
-        <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
-
+        <div className='flex flex-col border-b-2 border-gray-200 pb-6 w-full'  >
             <div>
                 <div className='flex gap-3 mb-2 cursor-pointer font-semibold rounded'>
                     <div className='md:w-16 md:h-16 w-10 h-10'>
@@ -59,7 +58,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
                             </>
                         </Link>
                     </div>
-                    <div className='flex flex-col justify-center'>
+                    <div className='flex flex-col '>
                         <Link href={`/profile/${post.postedBy._id}`}>
                             <div className='flex items-center gap-2'>
                                 <p className='flex gap-2 items-center md:text-md font-bold text-primary'>{post.postedBy.userName} {' '}
@@ -76,7 +75,7 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
 
             </div>
 
-            <div className='lg:ml-20 flex gap-4 relative' >
+            <div className='lg:ml-20 flex gap-4 relative  justify-center' >
                 <div className='rounded-3xl'
                     onMouseEnter={() => setIsHover(true)}
                     onMouseLeave={() => setIsHover(false)}>
