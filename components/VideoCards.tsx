@@ -75,10 +75,11 @@ const VideoCards: NextPage<IProps> = ({ post }) => {
 
             </div>
 
-            <div className='lg:ml-20 flex gap-4 relative  justify-center' >
+            <div className='lg:ml-20 flex gap-4 relative  justify-center md:justify-start' > 
                 <div className='rounded-3xl'
-                    onMouseEnter={() => setIsHover(true)}
-                    onMouseLeave={() => setIsHover(false)}>
+                    // onMouseEnter={() => setIsHover(true)}
+                    // onMouseLeave={() => setIsHover(false)}
+                    >
                     <Link href={`/detail/${post._id}`}>
                         <video
                             preload="metadata"
